@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="localhost.Customer_insights"
+  DTS:DTSID="{7FCD8644-1EA1-4D13-8A16-5BF812ED88EE}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=localhost;Initial Catalog=Customer_insights;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Clean_Customer-{7FCD8644-1EA1-4D13-8A16-5BF812ED88EE}localhost.Customer_insights 1;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Clean_Customer"
   DTS:PackageType="5"
-  DTS:VersionBuild="30"
-  DTS:VersionGUID="{6E6B38FF-3954-4C30-8AE8-160D5970F534}">
+  DTS:VersionBuild="36"
+  DTS:VersionGUID="{3ED1482A-3D54-452F-A10C-5252C6E3CBB5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -79,30 +79,6 @@
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[localhost.Customer]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{84B04521-330C-41D9-9FEF-D3DBABFED7A7}"
-      DTS:ObjectName="localhost.Customer">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=Customer;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Clean_Customer-{84B04521-330C-41D9-9FEF-D3DBABFED7A7}localhost.Customer;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[localhost.Customer_insights]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{7FCD8644-1EA1-4D13-8A16-5BF812ED88EE}"
-      DTS:ObjectName="localhost.Customer_insights">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=Customer_insights;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Clean_Customer-{7FCD8644-1EA1-4D13-8A16-5BF812ED88EE}localhost.Customer_insights 1;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -267,13 +243,6 @@
                       cachedName="Customer Name"
                       lineageId="Package\Clean Customer data\Derived Column NAME.Outputs[Derived Column Output].Columns[Customer Name]" />
                     <inputColumn
-                      refId="Package\Clean Customer data\Data Conversion.Inputs[Data Conversion Input].Columns[Country]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="Country"
-                      lineageId="Package\Clean Customer data\Source Customer CSV.Outputs[Flat File Source Output].Columns[Country]" />
-                    <inputColumn
                       refId="Package\Clean Customer data\Data Conversion.Inputs[Data Conversion Input].Columns[Phone]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -281,12 +250,17 @@
                       cachedName="Phone"
                       lineageId="Package\Clean Customer data\Source Customer CSV.Outputs[Flat File Source Output].Columns[Phone]" />
                     <inputColumn
-                      refId="Package\Clean Customer data\Data Conversion.Inputs[Data Conversion Input].Columns[Email]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
+                      refId="Package\Clean Customer data\Data Conversion.Inputs[Data Conversion Input].Columns[Derived_Country]"
+                      cachedDataType="wstr"
                       cachedLength="50"
-                      cachedName="Email"
-                      lineageId="Package\Clean Customer data\Source Customer CSV.Outputs[Flat File Source Output].Columns[Email]" />
+                      cachedName="Derived_Country"
+                      lineageId="Package\Clean Customer data\Derived Column NAME.Outputs[Derived Column Output].Columns[Derived_Country]" />
+                    <inputColumn
+                      refId="Package\Clean Customer data\Data Conversion.Inputs[Data Conversion Input].Columns[Email_clean]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Email_clean"
+                      lineageId="Package\Clean Customer data\Derived Column NAME.Outputs[Derived Column Output].Columns[Email_clean]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -321,21 +295,21 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Clean Customer data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Country]"
+                      refId="Package\Clean Customer data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Derived_Country]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       length="100"
-                      lineageId="Package\Clean Customer data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Country]"
-                      name="Copy of Country"
+                      lineageId="Package\Clean Customer data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Derived_Country]"
+                      name="Copy of Derived_Country"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Clean Customer data\Source Customer CSV.Outputs[Flat File Source Output].Columns[Country]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Clean Customer data\Derived Column NAME.Outputs[Derived Column Output].Columns[Derived_Country]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -379,7 +353,7 @@
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Clean Customer data\Source Customer CSV.Outputs[Flat File Source Output].Columns[Email]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Clean Customer data\Derived Column NAME.Outputs[Derived Column Output].Columns[Email_clean]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -546,6 +520,20 @@
                       cachedLength="50"
                       cachedName="Name"
                       lineageId="Package\Clean Customer data\Source Customer CSV.Outputs[Flat File Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Clean Customer data\Derived Column NAME.Inputs[Derived Column Input].Columns[Country]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Country"
+                      lineageId="Package\Clean Customer data\Source Customer CSV.Outputs[Flat File Source Output].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\Clean Customer data\Derived Column NAME.Inputs[Derived Column Input].Columns[Email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Email"
+                      lineageId="Package\Clean Customer data\Source Customer CSV.Outputs[Flat File Source Output].Columns[Email]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -579,6 +567,52 @@
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
                           name="FriendlyExpression">ISNULL(Name) || TRIM(Name) == "" ? (DT_STR,50,1252)"UNKNOWN" : (DT_STR,50,1252)Name</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Clean Customer data\Derived Column NAME.Outputs[Derived Column Output].Columns[Derived_Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Clean Customer data\Derived Column NAME.Outputs[Derived Column Output].Columns[Derived_Country]"
+                      name="Derived_Country"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[UPPER](#{Package\Clean Customer data\Source Customer CSV.Outputs[Flat File Source Output].Columns[Country]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">UPPER(Country)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Clean Customer data\Derived Column NAME.Outputs[Derived Column Output].Columns[Email_clean]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Clean Customer data\Derived Column NAME.Outputs[Derived Column Output].Columns[Email_clean]"
+                      name="Email_clean"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[LOWER](#{Package\Clean Customer data\Source Customer CSV.Outputs[Flat File Source Output].Columns[Email]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LOWER(Email)</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -668,8 +702,8 @@
               <connections>
                 <connection
                   refId="Package\Clean Customer data\Destination Clean Customer.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.Customer_insights]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.Customer_insights]"
+                  connectionManagerID="{7FCD8644-1EA1-4D13-8A16-5BF812ED88EE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.Customer_insights]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -690,14 +724,6 @@
                       externalMetadataColumnId="Package\Clean Customer data\Destination Clean Customer.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
                       lineageId="Package\Clean Customer data\Source Customer CSV.Outputs[Flat File Source Output].Columns[CustomerID]" />
                     <inputColumn
-                      refId="Package\Clean Customer data\Destination Clean Customer.Inputs[OLE DB Destination Input].Columns[Copy of Customer Name]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Copy of Customer Name"
-                      externalMetadataColumnId="Package\Clean Customer data\Destination Clean Customer.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
-                      lineageId="Package\Clean Customer data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Customer Name]" />
-                    <inputColumn
                       refId="Package\Clean Customer data\Destination Clean Customer.Inputs[OLE DB Destination Input].Columns[Copy of Email]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -714,13 +740,21 @@
                       externalMetadataColumnId="Package\Clean Customer data\Destination Clean Customer.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
                       lineageId="Package\Clean Customer data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Phone]" />
                     <inputColumn
-                      refId="Package\Clean Customer data\Destination Clean Customer.Inputs[OLE DB Destination Input].Columns[Copy of Country]"
+                      refId="Package\Clean Customer data\Destination Clean Customer.Inputs[OLE DB Destination Input].Columns[Copy of Customer Name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
-                      cachedName="Copy of Country"
+                      cachedName="Copy of Customer Name"
+                      externalMetadataColumnId="Package\Clean Customer data\Destination Clean Customer.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Clean Customer data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Customer Name]" />
+                    <inputColumn
+                      refId="Package\Clean Customer data\Destination Clean Customer.Inputs[OLE DB Destination Input].Columns[Copy of Derived_Country]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Copy of Derived_Country"
                       externalMetadataColumnId="Package\Clean Customer data\Destination Clean Customer.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
-                      lineageId="Package\Clean Customer data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Country]" />
+                      lineageId="Package\Clean Customer data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Derived_Country]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -839,8 +873,8 @@
               <connections>
                 <connection
                   refId="Package\Clean Customer data\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.Customer_insights]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.Customer_insights]"
+                  connectionManagerID="{7FCD8644-1EA1-4D13-8A16-5BF812ED88EE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.Customer_insights]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1201,7 +1235,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{C6A14653-E4AF-4196-AB09-8155E707D3D2}"
+          SQLTask:Connection="{7FCD8644-1EA1-4D13-8A16-5BF812ED88EE}"
           SQLTask:SqlStatementSource="TRUNCATE TABLE Customer" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -1218,7 +1252,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{C6A14653-E4AF-4196-AB09-8155E707D3D2}"
+          SQLTask:Connection="{7FCD8644-1EA1-4D13-8A16-5BF812ED88EE}"
           SQLTask:SqlStatementSource="TRUNCATE TABLE ErrorLog_Customers" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -1261,6 +1295,10 @@
           Size="167.2,41.6"
           Id="Package\Truncate Customer"
           TopLeft="381.66664581332,23.3999998372793" />
+        <NodeLayout
+          Size="218.4,41.6"
+          Id="Package\Truncate ErrorLog_Customers"
+          TopLeft="645.833298046558,16.6666672572825" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="465.26664581332,64.9999998372793">
@@ -1295,10 +1333,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="218.4,41.6"
-          Id="Package\Truncate ErrorLog_Customers"
-          TopLeft="645.833298046558,16.6666672572825" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="755.033298046558,58.2666672572825">
@@ -1342,9 +1376,17 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Clean Customer data\OLE DB Destination"
+          TopLeft="688.33329572446,434.133331115511" />
+        <NodeLayout
           Size="183.2,41.6"
           Id="Package\Clean Customer data\Source Customer CSV"
           TopLeft="374.166646223102,38.1333330681589" />
+        <NodeLayout
+          Size="258.4,41.6"
+          Id="Package\Clean Customer data\Derived Column Message and Logdate"
+          TopLeft="646.666631334359,328.866665214234" />
         <NodeLayout
           Size="208,41.6"
           Id="Package\Clean Customer data\Destination Clean Customer"
@@ -1353,110 +1395,14 @@
           Size="185.6,41.6"
           Id="Package\Clean Customer data\Derived Column NAME"
           TopLeft="375.833312798706,137.066665991677" />
-        <EdgeLayout
-          Id="Package\Clean Customer data.Paths[Flat File Source Output]"
-          TopLeft="467.199979510904,79.7333330681589">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,57.3333329235183"
-              Start="0,0"
-              End="0,49.8333329235183">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,49.8333329235183" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="156,41.6"
-          Id="Package\Clean Customer data\Data Conversion"
-          TopLeft="385.83331225233,215.933332109915" />
-        <EdgeLayout
-          Id="Package\Clean Customer data.Paths[Derived Column Output]"
-          TopLeft="466.233312525518,178.666665991677">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,37.2666661182378"
-              Start="0,0"
-              End="0,29.7666661182378">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.7666661182378" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
           Size="153.6,41.6"
           Id="Package\Clean Customer data\Conditional Split"
           TopLeft="381.666645813321,326.199998210073" />
         <NodeLayout
-          Size="171.2,41.6"
-          Id="Package\Clean Customer data\OLE DB Destination"
-          TopLeft="688.33329572446,434.133331115511" />
-        <NodeLayout
-          Size="258.4,41.6"
-          Id="Package\Clean Customer data\Derived Column Message and Logdate"
-          TopLeft="646.666631334359,328.866665214234" />
-        <EdgeLayout
-          Id="Package\Clean Customer data.Paths[Derived Column Output1]"
-          TopLeft="774.899963529409,370.466665214234">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,63.666665901277"
-              Start="0,0"
-              End="0,56.166665901277">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,56.166665901277" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Clean Customer data.Paths[Data Conversion Output]"
-          TopLeft="461.149979032825,257.533332109915">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,68.6666661001576"
-              Start="0,0"
-              End="0,61.1666661001576">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,61.1666661001576" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="156,41.6"
+          Id="Package\Clean Customer data\Data Conversion"
+          TopLeft="385.83331225233,215.933332109915" />
         <EdgeLayout
           Id="Package\Clean Customer data.Paths[Valid]"
           TopLeft="458.466645813321,367.799998210073">
@@ -1489,7 +1435,7 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-78.5845007917951,36.566666163438,22.70234375,9.7490234375"
+              BoundingBox="-78.584500791795,36.566666163438,22.70234375,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1513,15 +1459,103 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="36.6854029167694,5,30.5291796875,9.7490234375"
+              BoundingBox="36.6854029167695,5,30.5291796875,9.7490234375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Clean Customer data.Paths[Flat File Source Output]"
+          TopLeft="467.199979510904,79.7333330681589">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.3333329235183"
+              Start="0,0"
+              End="0,49.8333329235183">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.8333329235183" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Clean Customer data.Paths[Derived Column Output1]"
+          TopLeft="774.899963529409,370.466665214234">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,63.666665901277"
+              Start="0,0"
+              End="0,56.166665901277">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.166665901277" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Clean Customer data.Paths[Derived Column Output]"
+          TopLeft="466.233312525518,178.666665991677">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.2666661182378"
+              Start="0,0"
+              End="0,29.7666661182378">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.7666661182378" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Clean Customer data.Paths[Data Conversion Output]"
+          TopLeft="461.149979032825,257.533332109915">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,68.6666661001576"
+              Start="0,0"
+              End="0,61.1666661001576">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.1666661001576" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Clean Customer data\Destination Clean Customer">
+    design-time-name="Package\Clean Customer data\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1534,7 +1568,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Clean Customer data\OLE DB Destination">
+    design-time-name="Package\Clean Customer data\Destination Clean Customer">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

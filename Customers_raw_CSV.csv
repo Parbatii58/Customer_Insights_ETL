@@ -1,15 +1,15 @@
 CustomerID,Name,Email,Phone,Country
-1,,user1@gmail.com,9697888506,India
+1,,USER1@gmail.com,9697888506,India
 2,Ava Lewis,avalewis2@hotmail.com,9101090857,Australia
 3,Robert Brown,robertbrown3@yahoo.com,9996611780,Brazil
 4,Emma Watson,emmawatson4@outlook.com,9034333853,Germany
 5,UNKNOWN,isabellaking5outlook.com,9592074078,India
 6,Alex Kim,alexkim6@yahoo.com,9076958258,India
 7,Emma Watson,emmawatson7@gmail.com,9363519012,Canada
-8,Alex Kim,alexkim8@hotmail.com,9417179762,Canada
+8,Alex Kim,ALEX8@hotmail.com,9417179762,Canada
 9,Alex Kim,alexkim9hotmail.com,9953559835,
 10,Charlotte Green,charlottegreen10@hotmail.com,9823194798,USA
-11,,user11@yahoo.com,9202724722,Germany
+11,,USER11@yahoo.com,9202724722,Germany
 12,,user12@gmail.com,9944901788,France
 13,Emma Watson,emmawatson13@yahoo.com,9352599978,France
 14,Liam Johnson,liamjohnson14hotmail.com,9213645423,USA
@@ -18,7 +18,7 @@ CustomerID,Name,Email,Phone,Country
 17,David Miller,davidmiller17hotmail.com,9829801462,USA
 18,Linda White,lindawhite18@outlook.com,9106486694,India
 19,David Miller,davidmiller19@hotmail.com,9720433865,Brazil
-20,John Doe,johndoe20@gmail.com,9192045060,Nepal
+20,John Doe,JOHNDOE20@gmail.com,9192045060,Nepal
 21,Chris Evans,chrisevans21@yahoo.com,9135260072,Nepal
 22,Olivia Taylor,oliviataylor22@hotmail.com,9988578016,Germany
 23,Liam Johnson,liamjohnson23@gmail.com,9041471951,France
