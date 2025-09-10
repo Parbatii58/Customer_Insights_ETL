@@ -1,0 +1,122 @@
+CustomerID,Name,Email,Phone,Country
+1,,user1@gmail.com,9697888506,India
+2,Ava Lewis,avalewis2@hotmail.com,9101090857,Australia
+3,Robert Brown,robertbrown3@yahoo.com,9996611780,Brazil
+4,Emma Watson,emmawatson4@outlook.com,9034333853,Germany
+5,UNKNOWN,isabellaking5outlook.com,9592074078,India
+6,Alex Kim,alexkim6@yahoo.com,9076958258,India
+7,Emma Watson,emmawatson7@gmail.com,9363519012,Canada
+8,Alex Kim,alexkim8@hotmail.com,9417179762,Canada
+9,Alex Kim,alexkim9hotmail.com,9953559835,
+10,Charlotte Green,charlottegreen10@hotmail.com,9823194798,USA
+11,,user11@yahoo.com,9202724722,Germany
+12,,user12@gmail.com,9944901788,France
+13,Emma Watson,emmawatson13@yahoo.com,9352599978,France
+14,Liam Johnson,liamjohnson14hotmail.com,9213645423,USA
+15,Mia Clark,miaclark15gmail.com,9067271826,
+16,Charlotte Green,charlottegreen16gmail.com,9511332474,
+17,David Miller,davidmiller17hotmail.com,9829801462,USA
+18,Linda White,lindawhite18@outlook.com,9106486694,India
+19,David Miller,davidmiller19@hotmail.com,9720433865,Brazil
+20,John Doe,johndoe20@gmail.com,9192045060,Nepal
+21,Chris Evans,chrisevans21@yahoo.com,9135260072,Nepal
+22,Olivia Taylor,oliviataylor22@hotmail.com,9988578016,Germany
+23,Liam Johnson,liamjohnson23@gmail.com,9041471951,France
+24,Mia Clark,miaclark24@yahoo.com,9235243913,Nepal
+25,Olivia Taylor,oliviataylor25@gmail.com,9724818572,USA
+26,,user26hotmail.com,9509034256,Nepal
+27,Mark Lee,marklee27@gmail.com,9787912968,India
+28,David Miller,davidmiller28@hotmail.com,9881572837,Brazil
+29,UNKNOWN,robertbrown29utlook.com,9936333979,USA
+30,Ethan Young,ethanyoung30@yahoo.com,9940262900,France
+31,Olivia Taylor,oliviataylor31@yahoo.com,9013652466,
+32,Sara Khan,sarakhan32@outlook.com,9137829927,Brazil
+33,James Scott,jamesscott33@gmail.com,9913361565,
+34,Noah Wilson,noahwilson34@hotmail.com,9566476210,UK
+35,James Scott,jamesscott35@hotmail.com,9539188923,Canada
+36,Sara Khan,sarakhan36@outlook.com,9476472254,Australia
+37,Mia Clark,miaclark37@yahoo.com,9829916271,Germany
+38,Chris Evans,chrisevans38@outlook.com,9326157571,Australia
+39,Ava Lewis,avalewis39@hotmail.com,9802572213,India
+40,Isabella King,isabellaking40outlook.com,9679286032,Germany
+41,Alex Kim,alexkim41@gmail.com,9878301729,France
+42,Ethan Young,ethanyoung42@gmail.com,9023130280,Nepal
+43,James Scott,jamesscott43@hotmail.com,9830925009,Pakistan
+44,Emma Watson,emmawatson44@outlook.com,9117729385,Germany
+45,James Scott,jamesscott45@yahoo.com,9833039769,Pakistan
+46,Noah Wilson,noahwilson46yahoo.com,9303252072,India
+47,Mark Lee,marklee47@gmail.com,9435552153,
+48,Jane Smith,janesmith48gmail.com,9944196515,France
+49,John Doe,johndoe49@hotmail.com,9899256102,UK
+50,Mia Clark,miaclark50@gmail.com,9128248440,France
+51,Olivia Taylor,oliviataylor51@yahoo.com,9398487838,France
+52,John Doe,johndoe52@gmail.com,9997062939,
+53,Charlotte Green,charlottegreen53@outlook.com,9417303338,Brazil
+54,Mia Clark,miaclark54@yahoo.com,9533711504,
+55,Sophia Turner,sophiaturner55hotmail.com,9256622600,India
+56,Robert Brown,robertbrown56@outlook.com,9786528820,India
+57,John Doe,johndoe57@hotmail.com,9380965182,Pakistan
+58,Emma Watson,emmawatson58@hotmail.com,9513026913,
+59,Chris Evans,chrisevans59@hotmail.com,9599178166,France
+60,Liam Johnson,liamjohnson60@hotmail.com,9962574108,Pakistan
+61,Noah Wilson,noahwilson61hotmail.com,9381623070,Canada
+62,Emma Watson,emmawatson62@outlook.com,9214258855,Nepal
+63,Noah Wilson,noahwilson63@outlook.com,9086834070,Pakistan
+64,Liam Johnson,liamjohnson64@yahoo.com,9211976083,Australia
+65,Chris Evans,chrisevans65@gmail.com,9535224349,Germany
+66,Jane Smith,janesmith66@hotmail.com,9564475613,Canada
+67,Ava Lewis,avalewis67gmail.com,9855802829,USA
+68,Olivia Taylor,oliviataylor68@hotmail.com,9332602136,USA
+69,Sara Khan,sarakhan69@outlook.com,9815866608,India
+70,Chris Evans,chrisevans70@yahoo.com,9063246740,Canada
+71,Isabella King,isabellaking71@yahoo.com,9604370466,Nepal
+72,Alex Kim,alexkim72@outlook.com,9657954528,Canada
+73,Isabella King,isabellaking73@outlook.com,9890559069,Nepal
+74,Sara Khan,sarakhan74@outlook.com,9563405967,UK
+75,James Scott,jamesscott75@yahoo.com,9844889311,UK
+76,Liam Johnson,liamjohnson76@outlook.com,9072411208,Pakistan
+77,,user77@hotmail.com,9512417282,Australia
+78,Chris Evans,chrisevans78@hotmail.com,9166060766,
+79,Ethan Young,ethanyoung79@gmail.com,9867046457,USA
+80,Isabella King,isabellaking80@yahoo.com,9413831652,Canada
+81,John Doe,johndoe81@outlook.com,9655979871,Canada
+82,Mark Lee,marklee82gmail.com,9769102432,Canada
+83,Charlotte Green,charlottegreen83@outlook.com,9921613453,USA
+84,Noah Wilson,noahwilson84@gmail.com,9008623974,Pakistan
+85,Sophia Turner,sophiaturner85@gmail.com,9514394799,UK
+86,Olivia Taylor,oliviataylor86@hotmail.com,9316934138,Brazil
+87,Mark Lee,marklee87@gmail.com,9744774433,France
+88,Charlotte Green,charlottegreen88yahoo.com,9332496225,Pakistan
+89,Alex Kim,alexkim89hotmail.com,9874844563,Canada
+90,,user90@outlook.com,9003210466,Germany
+91,Mark Lee,marklee91outlook.com,9688959147,Nepal
+92,Mark Lee,marklee92gmail.com,9683090026,UK
+93,Liam Johnson,liamjohnson93gmail.com,9675704453,Nepal
+94,Sara Khan,sarakhan94@outlook.com,9152893718,Germany
+95,Noah Wilson,noahwilson95@hotmail.com,9020507616,India
+96,Alex Kim,alexkim96@gmail.com,9086093297,UK
+97,Alex Kim,alexkim97@outlook.com,9420310301,Canada
+98,Emma Watson,emmawatson98yahoo.com,9030364516,France
+99,Alex Kim,alexkim99@outlook.com,9518554476,
+100,Liam Johnson,liamjohnson100@outlook.com,9129414251,Pakistan
+101,Mark Lee,marklee101@outlook.com,9102803433,
+102,Sara Khan,sarakhan102@gmail.com,9026871001,India
+103,Robert Brown,robertbrown103hotmail.com,9477382545,Brazil
+104,James Scott,jamesscott104@outlook.com,9170380902,USA
+105,Sara Khan,sarakhan105@gmail.com,9338615174,
+106,James Scott,jamesscott106@hotmail.com,9330415826,USA
+107,Sophia Turner,sophiaturner107@hotmail.com,9465783619,Australia
+108,Ava Lewis,avalewis108@yahoo.com,9130004677,USA
+109,Alex Kim,alexkim109@hotmail.com,9247882283,Nepal
+110,Olivia Taylor,oliviataylor110@outlook.com,9078688565,Germany
+111,Ava Lewis,avalewis111@outlook.com,9683510267,India
+112,Jane Smith,janesmith112@hotmail.com,9953937529,Australia
+113,John Doe,johndoe113@gmail.com,9291861409,Pakistan
+114,,user114@outlook.com,9058200518,
+115,Charlotte Green,charlottegreen115@gmail.com,9429310107,France
+116,Ethan Young,ethanyoung116@yahoo.com,9386017611,Germany
+117,Mark Lee,marklee117@outlook.com,9194523035,Nepal
+118,Ethan Young,ethanyoung118@gmail.com,9677637057,UK
+119,Noah Wilson,noahwilson119@yahoo.com,9475040070,
+120,,user120@outlook.com,9855866670,UK
+121,,tommy32gmail.co,9847208638,Nepal
