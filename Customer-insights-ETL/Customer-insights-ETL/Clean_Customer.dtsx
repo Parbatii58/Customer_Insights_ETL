@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Clean_Customer"
   DTS:PackageType="5"
-  DTS:VersionBuild="65"
-  DTS:VersionGUID="{E7C863E5-05C5-4864-BCBA-D509F23A5876}">
+  DTS:VersionBuild="89"
+  DTS:VersionGUID="{EDBF4E46-6B51-48E6-BBAC-D5BDDCBD26F7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -82,72 +82,15 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[PriceError]"
-      DTS:CreationName="FLATFILE"
-      DTS:DTSID="{D3DA97D9-2354-49F5-8E88-83CB237A6C44}"
-      DTS:ObjectName="PriceError">
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{4ED4E8CC-B5DA-41D2-9968-F3B0A513DD88}"
+      DTS:ObjectName="Excel Connection Manager">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:Format="Delimited"
-          DTS:LocaleID="1033"
-          DTS:HeaderRowDelimiter="_x000D__x000A_"
-          DTS:RowDelimiter=""
-          DTS:TextQualifier="_x003C_none_x003E_"
-          DTS:CodePage="1252"
-          DTS:ConnectionString="C:\DATA\PriceError.csv">
-          <DTS:FlatFileColumns>
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="3"
-              DTS:TextQualified="True"
-              DTS:ObjectName="SaleID"
-              DTS:DTSID="{E3F5BD35-3EEE-4284-934E-138A4A153865}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="3"
-              DTS:TextQualified="True"
-              DTS:ObjectName="CustomerID"
-              DTS:DTSID="{60696A6C-0AF1-44C7-BEBA-729DB23995C1}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="3"
-              DTS:TextQualified="True"
-              DTS:ObjectName="ProductID"
-              DTS:DTSID="{14719D47-1BE0-4D6E-820E-6990C619015D}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="3"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Quantity"
-              DTS:DTSID="{28CE0179-55ED-42D1-BE03-103C4B053D01}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="131"
-              DTS:DataPrecision="10"
-              DTS:DataScale="2"
-              DTS:TextQualified="True"
-              DTS:ObjectName="UnitPrice"
-              DTS:DTSID="{B05DA3C3-8A42-4033-8F05-41677750517F}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x000D__x000A_"
-              DTS:DataType="133"
-              DTS:TextQualified="True"
-              DTS:ObjectName="SaleDate"
-              DTS:DTSID="{E329896A-C15D-4F81-888E-195E4B764B00}"
-              DTS:CreationName="" />
-          </DTS:FlatFileColumns>
-        </DTS:ConnectionManager>
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\DATA\UnitPrice_Error.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -2458,6 +2401,104 @@
               </outputs>
             </component>
             <component
+              refId="Package\Sales_Aggregated\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Sales_Aggregated\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Sales_Aggregated\Conditional Split.Inputs[Conditional Split Input].Columns[Product_UnitPrice]"
+                      cachedDataType="numeric"
+                      cachedName="Product_UnitPrice"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      lineageId="Package\Sales_Aggregated\Lookup.Outputs[Lookup Match Output].Columns[Product_UnitPrice]" />
+                    <inputColumn
+                      refId="Package\Sales_Aggregated\Conditional Split.Inputs[Conditional Split Input].Columns[UnitPrice]"
+                      cachedDataType="numeric"
+                      cachedName="UnitPrice"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      lineageId="Package\Sales_Aggregated\Source Sales Table.Outputs[OLE DB Source Output].Columns[UnitPrice]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Sales_Aggregated\Conditional Split.Outputs[UnitPrice_Error]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="UnitPrice_Error"
+                  synchronousInputId="Package\Sales_Aggregated\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Sales_Aggregated\Lookup.Outputs[Lookup Match Output].Columns[Product_UnitPrice]} != #{Package\Sales_Aggregated\Source Sales Table.Outputs[OLE DB Source Output].Columns[UnitPrice]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">Product_UnitPrice != UnitPrice</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Sales_Aggregated\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Sales_Aggregated\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Sales_Aggregated\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Sales_Aggregated\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales_Aggregated\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Sales_Aggregated\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Sales_Aggregated\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Sales_Aggregated\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Sales_Aggregated\Data Conversion"
               componentClassID="Microsoft.DataConvert"
               contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -2529,6 +2570,112 @@
                       refId="Package\Sales_Aggregated\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Sales_Aggregated\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Sales_Aggregated\Data Conversion 1"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Sales_Aggregated\Data Conversion 1.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Sales_Aggregated\Data Conversion 1.Inputs[Data Conversion Input].Columns[P_Category]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="P_Category"
+                      lineageId="Package\Sales_Aggregated\Lookup.Outputs[Lookup Match Output].Columns[P_Category]" />
+                    <inputColumn
+                      refId="Package\Sales_Aggregated\Data Conversion 1.Inputs[Data Conversion Input].Columns[P_ProductName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="P_ProductName"
+                      lineageId="Package\Sales_Aggregated\Lookup.Outputs[Lookup Match Output].Columns[P_ProductName]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Sales_Aggregated\Data Conversion 1.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Sales_Aggregated\Data Conversion 1.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales_Aggregated\Data Conversion 1.Outputs[Data Conversion Output].Columns[Copy of P_Category]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Sales_Aggregated\Data Conversion 1.Outputs[Data Conversion Output].Columns[Copy of P_Category]"
+                      name="Copy of P_Category"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Sales_Aggregated\Lookup.Outputs[Lookup Match Output].Columns[P_Category]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Sales_Aggregated\Data Conversion 1.Outputs[Data Conversion Output].Columns[Copy of P_ProductName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Sales_Aggregated\Data Conversion 1.Outputs[Data Conversion Output].Columns[Copy of P_ProductName]"
+                      name="Copy of P_ProductName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Sales_Aggregated\Lookup.Outputs[Lookup Match Output].Columns[P_ProductName]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Sales_Aggregated\Data Conversion 1.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Sales_Aggregated\Data Conversion 1.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales_Aggregated\Data Conversion 1.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Sales_Aggregated\Data Conversion 1.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Sales_Aggregated\Data Conversion 1.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Sales_Aggregated\Data Conversion 1.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -2646,7 +2793,7 @@
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Products]) [refTable]
-where [refTable].[ProductID] = ? and [refTable].[UnitPrice] = ?</property>
+where [refTable].[ProductID] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -2682,7 +2829,7 @@ where [refTable].[ProductID] = ? and [refTable].[UnitPrice] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Sales_Aggregated\Source Sales Table.Outputs[OLE DB Source Output].Columns[ProductID]};#{Package\Sales_Aggregated\Source Sales Table.Outputs[OLE DB Source Output].Columns[UnitPrice]};</property>
+                  name="ParameterMap">#{Package\Sales_Aggregated\Source Sales Table.Outputs[OLE DB Source Output].Columns[ProductID]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2715,24 +2862,6 @@ where [refTable].[ProductID] = ? and [refTable].[UnitPrice] = ?</property>
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
                           name="JoinToReferenceColumn">ProductID</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Sales_Aggregated\Lookup.Inputs[Lookup Input].Columns[UnitPrice]"
-                      cachedDataType="numeric"
-                      cachedName="UnitPrice"
-                      cachedPrecision="10"
-                      cachedScale="2"
-                      lineageId="Package\Sales_Aggregated\Source Sales Table.Outputs[OLE DB Source Output].Columns[UnitPrice]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">UnitPrice</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -2783,6 +2912,22 @@ where [refTable].[ProductID] = ? and [refTable].[UnitPrice] = ?</property>
                           name="CopyFromReferenceColumn">Category</property>
                       </properties>
                     </outputColumn>
+                    <outputColumn
+                      refId="Package\Sales_Aggregated\Lookup.Outputs[Lookup Match Output].Columns[Product_UnitPrice]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Sales_Aggregated\Lookup.Outputs[Lookup Match Output].Columns[Product_UnitPrice]"
+                      name="Product_UnitPrice"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">UnitPrice</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -2814,6 +2959,44 @@ where [refTable].[ProductID] = ? and [refTable].[UnitPrice] = ?</property>
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Sales_Aggregated\Multicast"
+              componentClassID="Microsoft.Multicast"
+              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+              name="Multicast">
+              <inputs>
+                <input
+                  refId="Package\Sales_Aggregated\Multicast.Inputs[Multicast Input 1]"
+                  name="Multicast Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Sales_Aggregated\Multicast.Outputs[Multicast Output 2]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 2"
+                  synchronousInputId="Package\Sales_Aggregated\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Sales_Aggregated\Multicast.Outputs[Multicast Output 1]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 1"
+                  synchronousInputId="Package\Sales_Aggregated\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Sales_Aggregated\Multicast.Outputs[Multicast Output 3]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 3"
+                  synchronousInputId="Package\Sales_Aggregated\Multicast.Inputs[Multicast Input 1]">
                   <externalMetadataColumns />
                 </output>
               </outputs>
@@ -3185,6 +3368,194 @@ where [refTable].[ProductID] = ? and [refTable].[UnitPrice] = ?</property>
                 </output>
               </outputs>
             </component>
+            <component
+              refId="Package\Sales_Aggregated\UnitPrice_Error"
+              componentClassID="Microsoft.ExcelDestination"
+              contactInfo="Excel Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Excel Destination"
+              name="UnitPrice_Error"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Sheet1$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Sales_Aggregated\UnitPrice_Error.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Sales_Aggregated\UnitPrice_Error.Inputs[Excel Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Excel Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Sales_Aggregated\UnitPrice_Error.Inputs[Excel Destination Input].Columns[CustomerID]"
+                      cachedDataType="i4"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\Sales_Aggregated\UnitPrice_Error.Inputs[Excel Destination Input].ExternalColumns[CustomerId]"
+                      lineageId="Package\Sales_Aggregated\Source Sales Table.Outputs[OLE DB Source Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\Sales_Aggregated\UnitPrice_Error.Inputs[Excel Destination Input].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      externalMetadataColumnId="Package\Sales_Aggregated\UnitPrice_Error.Inputs[Excel Destination Input].ExternalColumns[ProductId]"
+                      lineageId="Package\Sales_Aggregated\Source Sales Table.Outputs[OLE DB Source Output].Columns[ProductID]" />
+                    <inputColumn
+                      refId="Package\Sales_Aggregated\UnitPrice_Error.Inputs[Excel Destination Input].Columns[Quantity]"
+                      cachedDataType="i4"
+                      cachedName="Quantity"
+                      externalMetadataColumnId="Package\Sales_Aggregated\UnitPrice_Error.Inputs[Excel Destination Input].ExternalColumns[Quantity]"
+                      lineageId="Package\Sales_Aggregated\Source Sales Table.Outputs[OLE DB Source Output].Columns[Quantity]" />
+                    <inputColumn
+                      refId="Package\Sales_Aggregated\UnitPrice_Error.Inputs[Excel Destination Input].Columns[Product_UnitPrice]"
+                      cachedDataType="numeric"
+                      cachedName="Product_UnitPrice"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Sales_Aggregated\UnitPrice_Error.Inputs[Excel Destination Input].ExternalColumns[Product_UnitPrice]"
+                      lineageId="Package\Sales_Aggregated\Lookup.Outputs[Lookup Match Output].Columns[Product_UnitPrice]" />
+                    <inputColumn
+                      refId="Package\Sales_Aggregated\UnitPrice_Error.Inputs[Excel Destination Input].Columns[SaleID]"
+                      cachedDataType="i4"
+                      cachedName="SaleID"
+                      externalMetadataColumnId="Package\Sales_Aggregated\UnitPrice_Error.Inputs[Excel Destination Input].ExternalColumns[SalesId]"
+                      lineageId="Package\Sales_Aggregated\Source Sales Table.Outputs[OLE DB Source Output].Columns[SaleID]" />
+                    <inputColumn
+                      refId="Package\Sales_Aggregated\UnitPrice_Error.Inputs[Excel Destination Input].Columns[UnitPrice]"
+                      cachedDataType="numeric"
+                      cachedName="UnitPrice"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Sales_Aggregated\UnitPrice_Error.Inputs[Excel Destination Input].ExternalColumns[Sales_UnitPrice]"
+                      lineageId="Package\Sales_Aggregated\Source Sales Table.Outputs[OLE DB Source Output].Columns[UnitPrice]" />
+                    <inputColumn
+                      refId="Package\Sales_Aggregated\UnitPrice_Error.Inputs[Excel Destination Input].Columns[Copy of P_Category]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Copy of P_Category"
+                      externalMetadataColumnId="Package\Sales_Aggregated\UnitPrice_Error.Inputs[Excel Destination Input].ExternalColumns[Category]"
+                      lineageId="Package\Sales_Aggregated\Data Conversion 1.Outputs[Data Conversion Output].Columns[Copy of P_Category]" />
+                    <inputColumn
+                      refId="Package\Sales_Aggregated\UnitPrice_Error.Inputs[Excel Destination Input].Columns[Copy of P_ProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Copy of P_ProductName"
+                      externalMetadataColumnId="Package\Sales_Aggregated\UnitPrice_Error.Inputs[Excel Destination Input].ExternalColumns[ProductName]"
+                      lineageId="Package\Sales_Aggregated\Data Conversion 1.Outputs[Data Conversion Output].Columns[Copy of P_ProductName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Sales_Aggregated\UnitPrice_Error.Inputs[Excel Destination Input].ExternalColumns[SalesId]"
+                      dataType="wstr"
+                      length="255"
+                      name="SalesId" />
+                    <externalMetadataColumn
+                      refId="Package\Sales_Aggregated\UnitPrice_Error.Inputs[Excel Destination Input].ExternalColumns[CustomerId]"
+                      dataType="wstr"
+                      length="255"
+                      name="CustomerId" />
+                    <externalMetadataColumn
+                      refId="Package\Sales_Aggregated\UnitPrice_Error.Inputs[Excel Destination Input].ExternalColumns[ProductId]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductId" />
+                    <externalMetadataColumn
+                      refId="Package\Sales_Aggregated\UnitPrice_Error.Inputs[Excel Destination Input].ExternalColumns[Category]"
+                      dataType="wstr"
+                      length="255"
+                      name="Category" />
+                    <externalMetadataColumn
+                      refId="Package\Sales_Aggregated\UnitPrice_Error.Inputs[Excel Destination Input].ExternalColumns[ProductName]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductName" />
+                    <externalMetadataColumn
+                      refId="Package\Sales_Aggregated\UnitPrice_Error.Inputs[Excel Destination Input].ExternalColumns[Quantity]"
+                      dataType="wstr"
+                      length="255"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\Sales_Aggregated\UnitPrice_Error.Inputs[Excel Destination Input].ExternalColumns[Sales_UnitPrice]"
+                      dataType="wstr"
+                      length="255"
+                      name="Sales_UnitPrice" />
+                    <externalMetadataColumn
+                      refId="Package\Sales_Aggregated\UnitPrice_Error.Inputs[Excel Destination Input].ExternalColumns[Product_UnitPrice]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product_UnitPrice" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Sales_Aggregated\UnitPrice_Error.Outputs[Excel Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Excel Destination Error Output"
+                  synchronousInputId="Package\Sales_Aggregated\UnitPrice_Error.Inputs[Excel Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales_Aggregated\UnitPrice_Error.Outputs[Excel Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Sales_Aggregated\UnitPrice_Error.Outputs[Excel Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Sales_Aggregated\UnitPrice_Error.Outputs[Excel Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Sales_Aggregated\UnitPrice_Error.Outputs[Excel Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
           </components>
           <paths>
             <path
@@ -3198,20 +3569,40 @@ where [refTable].[ProductID] = ? and [refTable].[UnitPrice] = ?</property>
               name="Data Conversion Output"
               startId="Package\Sales_Aggregated\Data Conversion.Outputs[Data Conversion Output]" />
             <path
+              refId="Package\Sales_Aggregated.Paths[Data Conversion Output1]"
+              endId="Package\Sales_Aggregated\UnitPrice_Error.Inputs[Excel Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Sales_Aggregated\Data Conversion 1.Outputs[Data Conversion Output]" />
+            <path
               refId="Package\Sales_Aggregated.Paths[Derived Column Output]"
               endId="Package\Sales_Aggregated\Aggregate.Inputs[Aggregate Input 1]"
               name="Derived Column Output"
               startId="Package\Sales_Aggregated\Derived Column.Outputs[Derived Column Output]" />
             <path
               refId="Package\Sales_Aggregated.Paths[Lookup Match Output]"
-              endId="Package\Sales_Aggregated\Derived Column.Inputs[Derived Column Input]"
+              endId="Package\Sales_Aggregated\Multicast.Inputs[Multicast Input 1]"
               name="Lookup Match Output"
               startId="Package\Sales_Aggregated\Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Sales_Aggregated.Paths[Multicast Output 1]"
+              endId="Package\Sales_Aggregated\Conditional Split.Inputs[Conditional Split Input]"
+              name="Multicast Output 1"
+              startId="Package\Sales_Aggregated\Multicast.Outputs[Multicast Output 1]" />
+            <path
+              refId="Package\Sales_Aggregated.Paths[Multicast Output 2]"
+              endId="Package\Sales_Aggregated\Derived Column.Inputs[Derived Column Input]"
+              name="Multicast Output 2"
+              startId="Package\Sales_Aggregated\Multicast.Outputs[Multicast Output 2]" />
             <path
               refId="Package\Sales_Aggregated.Paths[OLE DB Source Output]"
               endId="Package\Sales_Aggregated\Lookup.Inputs[Lookup Input]"
               name="OLE DB Source Output"
               startId="Package\Sales_Aggregated\Source Sales Table.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Sales_Aggregated.Paths[UnitPrice_Error]"
+              endId="Package\Sales_Aggregated\Data Conversion 1.Inputs[Data Conversion Input]"
+              name="UnitPrice_Error"
+              startId="Package\Sales_Aggregated\Conditional Split.Outputs[UnitPrice_Error]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -3225,7 +3616,7 @@ where [refTable].[ProductID] = ? and [refTable].[UnitPrice] = ?</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Customer"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -3242,7 +3633,7 @@ where [refTable].[ProductID] = ? and [refTable].[UnitPrice] = ?</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate ErrorLog_Customers"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -3259,7 +3650,7 @@ where [refTable].[ProductID] = ? and [refTable].[UnitPrice] = ?</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Products"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -3276,7 +3667,7 @@ where [refTable].[ProductID] = ? and [refTable].[UnitPrice] = ?</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Sales"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -3293,7 +3684,7 @@ where [refTable].[ProductID] = ? and [refTable].[UnitPrice] = ?</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Sales_Aggregated"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -3941,125 +4332,45 @@ where [refTable].[ProductID] = ? and [refTable].[UnitPrice] = ?</property>
     design-time-name="Package\Sales_Aggregated">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="168.8,41.6"
-          Id="Package\Sales_Aggregated\Source Sales Table"
-          TopLeft="389.999978691341,15.5999998915195" />
-        <NodeLayout
-          Size="171.2,41.6"
-          Id="Package\Sales_Aggregated\OLE DB Destination"
-          TopLeft="381.310520476653,672.999995771271" />
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="112.8,41.6"
           Id="Package\Sales_Aggregated\Lookup"
-          TopLeft="403.703681646307,142.518517527463" />
-        <EdgeLayout
-          Id="Package\Sales_Aggregated.Paths[OLE DB Source Output]"
-          TopLeft="474.399978691341,57.1999998915195">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-14.2962970450341,85.3185176359431"
-              Start="0,0"
-              End="-14.2962970450341,77.8185176359431">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,38.6592588179715" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,38.6592588179715"
-                    Point2="0,42.6592588179715"
-                    Point3="-4,42.6592588179715" />
-                  <mssgle:LineSegment
-                    End="-10.2962970450341,42.6592588179715" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-10.2962970450341,42.6592588179715"
-                    Point2="-14.2962970450341,42.6592588179715"
-                    Point3="-14.2962970450341,46.6592588179715" />
-                  <mssgle:LineSegment
-                    End="-14.2962970450341,77.8185176359431" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="402.037015070703,117.385184368904" />
         <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\Sales_Aggregated\Derived Column"
-          TopLeft="384.25923826426,416.370367926212" />
+          Size="168.8,41.6"
+          Id="Package\Sales_Aggregated\Source Sales Table"
+          TopLeft="376.666646086509,16.4666665521595" />
         <NodeLayout
-          Size="126.4,41.6"
-          Id="Package\Sales_Aggregated\Aggregate"
-          TopLeft="386.111090014931,498.148145141499" />
-        <EdgeLayout
-          Id="Package\Sales_Aggregated.Paths[Derived Column Output]"
-          TopLeft="460.65923826426,457.970367926212">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-11.3481482493289,40.1777772152865"
-              Start="0,0"
-              End="-11.3481482493289,32.6777772152865">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.0888886076433" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.0888886076433"
-                    Point2="0,20.0888886076433"
-                    Point3="-4,20.0888886076433" />
-                  <mssgle:LineSegment
-                    End="-7.34814824932886,20.0888886076433" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-7.34814824932886,20.0888886076433"
-                    Point2="-11.3481482493289,20.0888886076433"
-                    Point3="-11.3481482493289,24.0888886076433" />
-                  <mssgle:LineSegment
-                    End="-11.3481482493289,32.6777772152865" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="171.2,41.6"
+          Id="Package\Sales_Aggregated\OLE DB Destination"
+          TopLeft="353.810521979186,601.222218576073" />
         <NodeLayout
           Size="156,41.6"
           Id="Package\Sales_Aggregated\Data Conversion"
-          TopLeft="387.962941765602,595.259256152165" />
+          TopLeft="362.40738760634,503.837034649128" />
+        <NodeLayout
+          Size="126.4,41.6"
+          Id="Package\Sales_Aggregated\Aggregate"
+          TopLeft="383.888867914125,420.592590208702" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Sales_Aggregated\Derived Column"
+          TopLeft="370.370350134227,315.414813156135" />
         <EdgeLayout
-          Id="Package\Sales_Aggregated.Paths[Aggregate Output 1]"
-          TopLeft="449.311090014931,539.748145141499">
+          Id="Package\Sales_Aggregated.Paths[OLE DB Source Output]"
+          TopLeft="459.751830578606,58.0666665521595">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="16.651851750671,55.5111110106661"
+              EndConnector="0,59.3185178167442"
               Start="0,0"
-              End="16.651851750671,48.0111110106661">
+              End="0,51.8185178167442">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.7555555053331" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,23.7555555053331"
-                    Point2="0,27.7555555053331"
-                    Point3="4,27.7555555053331" />
-                  <mssgle:LineSegment
-                    End="12.651851750671,27.7555555053331" />
-                  <mssgle:CubicBezierSegment
-                    Point1="12.651851750671,27.7555555053331"
-                    Point2="16.651851750671,27.7555555053331"
-                    Point3="16.651851750671,31.7555555053331" />
-                  <mssgle:LineSegment
-                    End="16.651851750671,48.0111110106661" />
+                    End="0,51.8185178167442" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4069,19 +4380,71 @@ where [refTable].[ProductID] = ? and [refTable].[UnitPrice] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Sales_Aggregated.Paths[Data Conversion Output]"
-          TopLeft="466.436731121127,636.859256152165">
+          Id="Package\Sales_Aggregated.Paths[Derived Column Output]"
+          TopLeft="446.929609024176,357.014813156135">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,36.1407396191062"
+              EndConnector="0,63.5777770525664"
               Start="0,0"
-              End="0,28.6407396191062">
+              End="0,56.0777770525664">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.6407396191062" />
+                    End="0,56.0777770525664" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sales_Aggregated.Paths[Aggregate Output 1]"
+          TopLeft="443.748127760233,462.192590208702">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.6444444404264"
+              Start="0,0"
+              End="0,34.1444444404264">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.1444444404264" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="119.2,41.6"
+          Id="Package\Sales_Aggregated\Multicast"
+          TopLeft="392.777756317347,216.622222624001" />
+        <NodeLayout
+          Size="153.6,41.6"
+          Id="Package\Sales_Aggregated\Conditional Split"
+          TopLeft="601.018485680316,219.162963263628" />
+        <EdgeLayout
+          Id="Package\Sales_Aggregated.Paths[Data Conversion Output]"
+          TopLeft="439.908954792763,545.437034649128">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55.7851839269446"
+              Start="0,0"
+              End="0,48.2851839269446">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.2851839269446" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4092,31 +4455,164 @@ where [refTable].[ProductID] = ? and [refTable].[UnitPrice] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Sales_Aggregated.Paths[Lookup Match Output]"
-          TopLeft="460.381459955283,184.118517527463">
+          TopLeft="455.407385694025,158.985184368904">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,232.251850398749"
+              EndConnector="0,57.6370382550971"
               Start="0,0"
-              End="0,224.751850398749">
+              End="0,50.1370382550971">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,224.751850398749" />
+                    End="0,50.1370382550971" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,106.571237699375,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,19.2638316275485,96.3827734375,11.609375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sales_Aggregated.Paths[Multicast Output 2]"
+          TopLeft="449.574053225787,258.222222624001">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.1925905321345"
+              Start="0,0"
+              End="0,49.6925905321345">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.6925905321345" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sales_Aggregated.Paths[Multicast Output 1]"
+          TopLeft="511.977756317347,238.692592943814">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="89.0407293629686,0"
+              Start="0,0"
+              End="81.5407293629686,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="81.5407293629686,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\Sales_Aggregated\UnitPrice_Error"
+          TopLeft="831.481436051338,600.296292894564" />
+        <NodeLayout
+          Size="164,47.2"
+          Id="Package\Sales_Aggregated\Data Conversion 1"
+          TopLeft="840.740694804694,218.740740734044" />
+        <EdgeLayout
+          Id="Package\Sales_Aggregated.Paths[UnitPrice_Error]"
+          TopLeft="754.618485680316,241.151851998836">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="86.1222091243784,0"
+              Start="0,0"
+              End="78.6222091243784,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="78.6222091243784,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="5.4884678434392,5,67.6452734375,10.7841796875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sales_Aggregated.Paths[Data Conversion Output1]"
+          TopLeft="922.740694804694,265.940740734044">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-16.4592587533557,334.355552160519"
+              Start="0,0"
+              End="-16.4592587533557,326.855552160519">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,163.17777608026" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,163.17777608026"
+                    Point2="0,167.17777608026"
+                    Point3="-4,167.17777608026" />
+                  <mssgle:LineSegment
+                    End="-12.4592587533557,167.17777608026" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-12.4592587533557,167.17777608026"
+                    Point2="-16.4592587533557,167.17777608026"
+                    Point3="-16.4592587533557,171.17777608026" />
+                  <mssgle:LineSegment
+                    End="-16.4592587533557,326.855552160519" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sales_Aggregated\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Products]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Sales_Aggregated\Source Sales Table">
     <Properties>
@@ -4144,25 +4640,15 @@ where [refTable].[ProductID] = ? and [refTable].[UnitPrice] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Sales_Aggregated\Lookup">
+    design-time-name="Package\Sales_Aggregated\UnitPrice_Error">
     <Properties>
       <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Products]</Value>
+        <Name>DataSourceViewID</Name>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

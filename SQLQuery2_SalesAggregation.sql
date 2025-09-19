@@ -50,10 +50,8 @@ SELECT * FROM Sales_Aggregated
 
 -- IN MY OPINION 2 ta Lookup rakhna parcha
 
-SELECT s.CustomerID, s.ProductID, p.ProductName, s.UnitPrice as Sales_Price, p.UnitPrice AS Actual_Price, s.Quantity
+SELECT s.SaleID, s.CustomerID, s.ProductID, p.ProductName, s.UnitPrice as Sales_Price, p.UnitPrice AS Actual_Price, s.Quantity
 FROM Sales s
 INNER JOIN Products p
 ON s.ProductID = p.ProductID
 where s.UnitPrice != p.UnitPrice
-
-INSERT INTO Sales VALUES(1201, 50, 115, 3, 55.34,'2024-11-27')
