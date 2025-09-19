@@ -2,13 +2,13 @@
 <BuildLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ProjectInfo>
     <Name>Customer-insights-ETL</Name>
-    <LastWriteTime>2025-09-19T08:54:05.7964406Z</LastWriteTime>
+    <LastWriteTime>2025-09-19T17:19:09.8965094Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>Clean_Customer.dtsx</Name>
-      <LastWriteTime>2025-09-19T09:10:50.3944537Z</LastWriteTime>
+      <LastWriteTime>2025-09-19T17:21:28.9363865Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

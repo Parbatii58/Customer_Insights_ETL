@@ -47,5 +47,6 @@ ProductID,ProductName,Category,UnitPrice
 146,GoPro HERO11,Electronics,130.85
 147,Levis Jeans,Apparel,274.1
 148,Pride and Prejudice,Books,219.93
-149,Yoga Mat,Sports,205.71
-150,Instant Pot,Home Appliances,498.69
+149,YogaMat,Sports,205.71
+150,InstantPot,Home Appliances,498.69
+151,Munch,Chocolate,120.00
